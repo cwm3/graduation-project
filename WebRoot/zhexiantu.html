@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="gbk">
+    <title>ECharts</title>
+      <!-- ECharts单文件引入 -->
+     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+     <script type="text/javascript" src="jquery/jquery-1.8.0.min.js"></script>
+     
+    <script type="text/javascript">
+       function init() {
+         var Request=new UrlSearch(); //实例化
+         var month= Request.month;
+         var vendorname= Request.vendorname;
+         var clientname= Request.clientname;
+         var lead= Request.lead;
+         var field= Request.field;
+         var score= Request.score;
+         var method= Request.method;
+
+         
+         
+         var arr_name=new Array();
+         var arr_score=new Array();
+         var arr_month=new Array();
+         
+         
+         arr_score=score.split("|");
+         arr_month=month.split(",");
+         
+         
+         if(method=="Vendor Name") {
+         
+            arr_name=vendorname.split("||");
+                     
+         }else if(method=="Client Name") {
+         
+            arr_name=clientname.split("||");
+                     
+         }else if(method=="Lead Name") {
+         
+            arr_name=lead.split("||");
+         
+         }else if(method=="Field") {
+         
+            arr_name=field.split("||");
+         }
+         
+         for(var i = 0;i<arr_name.length;i++){
+               arr_name[i]=arr_name[i].replace("20182018","&");
+               arr_name[i]=arr_name[i].replace("20172017",",");
+         }
+         
+        var series=[];
+        
+	    for(var i = 0;i<arr_name.length;i++){
+	        series.push({
+	            name: arr_name[i],
+	            type: 'line',
+	            data: eval('(' + arr_score[i] + ')')
+	        });	        
+	    }
+	    
+	  
+		var dadadd = [];
+	    for ( var i = 0; i < arr_name.length; i++) {
+			dadadd.push(arr_name[i]);
+		}
+		var monthdd = [];
+		for( var i = 0; i < arr_month.length; i++) {
+			monthdd.push(arr_month[i]);
+		}
+
+						// 基于准备好的dom，初始化echarts图表
+						var myChart = echarts.init(document.getElementById('main'));
+						option = {
+							title : {
+								text : '',
+								subtext : ''
+							},
+							tooltip : {
+								trigger : 'axis'
+							},
+							legend : {
+								data : dadadd,
+								 x: 'left',                // 水平安放位置，默认为全图右对齐，可选为：
+								y: 'top'
+								
+							},
+							toolbox : {
+								show : true,
+								    x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
+                                   // 'center' ¦ 'left' ¦ 'right'
+                                   // ¦ {number}（x坐标，单位px）
+                                    y: 'top', 
+								feature : {
+									mark : {
+										show : false
+									},
+									dataView : {
+										show : false,
+										readOnly : false
+									},
+									magicType : {
+										show : true,
+										type : [ 'line', 'bar' ]
+										
+									},
+									restore : {
+										show : false
+									},
+									saveAsImage : {
+										show : false
+									}
+								}
+							},
+							calculable : true,
+							xAxis : [ {
+								type : 'category',
+								boundaryGap : false,
+								data : monthdd
+							} ],
+							yAxis : [ 
+							
+							
+					/* 	{
+								type : 'category',
+								boundaryGap : false,
+								data : [ '0.0','1.0', '2.0', '3.0', '4.0', '5.0', '6.0', '7.0' ]
+							} */
+							
+						 	 {
+                type : 'value',
+                axisLabel : {
+                    formatter: '{value} '
+                }
+            }
+							
+							
+							],
+							series : series
+
+						};
+
+						// 为echarts对象加载数据 
+						myChart.setOption(option);
+					}
+
+
+
+
+					function UrlSearch() {
+						var name, value;
+						var str = location.href; //取得整个地址栏
+						var num = str.indexOf("?")
+						str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+
+						var arr = str.split("&"); //各个参数放到数组里
+						for ( var i = 0; i < arr.length; i++) {
+							num = arr[i].indexOf("=");
+							if (num > 0) {
+								name = arr[i].substring(0, num);
+								value = arr[i].substr(num + 1);
+								this[name] = value;
+							}
+						}
+					}
+				</script>    
+</head>
+
+
+
+
+<body onload="init();">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+  
+</body>

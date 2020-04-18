@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+    <welcome-file>userlogin.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>servlet.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/servlet/DownloadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InputServlet</servlet-name>
+    <servlet-class>servlet.InputServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InputServlet</servlet-name>
+    <url-pattern>/servlet/InputServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>VendorNameServlet</servlet-name>
+    <servlet-class>servlet.VendorNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VendorNameServlet</servlet-name>
+    <url-pattern>/servlet/VendorNameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+    
+  
+    <servlet-name>ClentInputServlet</servlet-name>
+    <servlet-class>servlet.ClentInputServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClentInputServlet</servlet-name>
+    <url-pattern>/servlet/ClentInputServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ClientNameServlet</servlet-name>
+    <servlet-class>servlet.ClientNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientNameServlet</servlet-name>
+    <url-pattern>/servlet/ClientNameServlet</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <servlet-name>LeadServlet</servlet-name>
+    <servlet-class>servlet.LeadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LeadServlet</servlet-name>
+    <url-pattern>/servlet/LeadServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>CostCodeServlet</servlet-name>
+    <servlet-class>servlet.CostCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CostCodeServlet</servlet-name>
+    <url-pattern>/servlet/CostCodeServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ProgressBarServlet</servlet-name>
+    <servlet-class>servlet.ProgressBarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProgressBarServlet</servlet-name>
+    <url-pattern>/ProgressBarServlet</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:beans.xml</param-value>
+  </context-param>
+  <filter>
+    <filter-name>Encoding</filter-name>
+    <filter-class>com.productsystem.util.PageEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>Encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>openSessionInView</filter-name>
+    <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+    <init-param>
+      <param-name>sessionFactoryBeanName</param-name>
+      <param-value>sf</param-value>
+    </init-param>
+    <init-param>
+      <param-name>singleSession</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>flushMode</param-name>
+      <param-value>AUTO</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>openSessionInView</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

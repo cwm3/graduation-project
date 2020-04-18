@@ -1,0 +1,14 @@
+.head_1{position: absolute;left:260px;top:4px;}
+.head_2{position:absolute;left:465px;top:25px;}
+.write_kuang{position:absolute;left:260px;top:150px;border: 3px solid #C5D0D4;background-color: white;width:850px;height:350px;}
+.message{position: absolute;left:700px;top:230px;}
+.btn{position: absolute;left:130px;top:130px}
+.forget{position: absolute;left:252px;top:110px;width:88px}
+.redist{position: absolute;left:82px;top:210px;width:228px}
+.bottom{position: absolute;left:330px;top:650px}
+.np_text{position: absolute;top:225px;left:700px}
+.np_button{position: absolute;top:218px;left:792px}
+/*È¥ÐéÏß¿ò*/
+a:focus, input[type=button] ,input[type=submit] {
+    outline:none;
+}

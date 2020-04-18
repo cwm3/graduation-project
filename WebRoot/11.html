@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="gbk">
+    <title>ECharts - 孤影'Blog</title>
+     <!-- ECharts单文件引入 -->
+     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript">
+    function init() {
+        <!-- ECharts单文件引入 -->
+     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript">
+    
+    function init(){
+    
+    var Request=new UrlSearch(); //实例化
+    var bb= Request.aa;
+    var arr=bb.split(",");
+    
+    // 基于准备好的dom，初始化echarts图表
+    var myChart = echarts.init(document.getElementById('main')); 
+	option = {
+	    title : {
+	        text: 'Evaluation Report',
+	        subtext: '',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    legend: {
+	        orient : 'vertical',
+	        x : 'left',
+	         data:['Wrong Term','Wrong Meaning','Omission','Structural Error','Misspelling','Punctuation','Style','Miscellaneous']
+	    },
+	    toolbox: {
+	        show : false,
+	        feature : {
+	            mark : {show: false},
+	            dataView : {show: false, readOnly: false},
+	            magicType : {
+	                show: false, 
+	                type: ['pie', 'funnel'],
+	                option: {
+	                    funnel: {
+	                        x: '25%',
+	                        width: '50%',
+	                        funnelAlign: 'left',
+	                        max: 1548
+	                    }
+	                }
+	            },
+	            restore : {show: false},
+	            saveAsImage : {show: false}
+	        }
+	    },
+	    calculable : true,
+	    series : [
+	        {
+	            name:'访问来源',
+	            type:'pie',
+	            radius : '55%',
+	            center: ['50%', '60%'],
+	            data:[
+                {value:arr[0], name:'Wrong Term'},
+                {value:arr[1], name:'Wrong Meaning'},
+                {value:arr[2], name:'Omission'},
+                {value:arr[3], name:'Structural Error'},
+                {value:arr[4], name:'Misspelling'},
+                {value:arr[5], name:'Punctuation'},
+                {value:arr[6], name:'Style'},
+                {value:arr[7], name:'Miscellaneous'}                
+            ]
+	        }
+	    ]
+	};
+	  // 为echarts对象加载数据 
+	myChart.setOption(option);
+}
+
+function UrlSearch() 
+{
+   var name,value; 
+   var str=location.href; //取得整个地址栏
+   var num=str.indexOf("?") 
+   str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+
+   var arr=str.split("&"); //各个参数放到数组里
+   for(var i=0;i < arr.length;i++){ 
+    num=arr[i].indexOf("="); 
+    if(num>0){ 
+     name=arr[i].substring(0,num);
+     value=arr[i].substr(num+1);
+     this[name]=value;
+     } 
+    } 
+} 
+ 
+   </script>
+</head>
+<body onload="init();">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+   
+</body>

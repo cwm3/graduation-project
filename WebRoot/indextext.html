@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery bootstrap-select可搜索多选下拉列表插件</title>
+    
+
+<script type="text/javascript" src="bootstrap/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap-select.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-select.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">   
+<script src="bootstrap/bootstrap.min.js"></script>
+    
+
+<script type="text/javascript">
+    
+   
+ $(window).on('load', function () {
+
+           
+ $('.selectpicker').selectpicker({
+                'selectedText': 'cat'
+            });
+
+         
+   // $('.selectpicker').selectpicker('hide');
+        });
+  
+  </script>
+
+
+</head>
+<body>
+  
+       <table width="94%" align="center" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000" >  
+            
+                <tr>  
+                 <td width="80%" align="center" ><span class='title'>Vendor Id</span></td>
+                 <td  align="center" > <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true">
+       
+
+ <option>cow</option>
+     
+   <option>b2ull</option>
+                       
+ <option>ASD</option>
+          
+  <option selected>Bla</option>
+          
+  <option>Ble</option>
+       
+ </optgroup>
+    </select></td>
+               
+                </tr>  
+               </table>   
+   
+
+
+
+
+
+</body>
+</html>

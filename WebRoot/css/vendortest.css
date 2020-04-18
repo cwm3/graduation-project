@@ -1,0 +1,50 @@
+/*====通用=====*/
+body{font: 14px "微软雅黑","Microsoft YaHei", Tahoma, sans-serif;text-align: left;margin: 0;padding: 0;}
+img{border: 0;vertical-align: middle;max-width: 100% !important}
+a{color: #000;text-decoration: none;}
+a:hover{color: #D60403;text-decoration: underline;}
+table{border-spacing: 0;border-collapse:collapse;}
+h3,h4{font-size: 14px;}
+div,ul,h3,h4,p,table,iframe{margin: 0;padding: 0;}
+li{list-style: none;}
+.left{float: left;}
+.right{float: right;}
+.clear{clear: both;}
+
+.header{
+	height: 80px;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+.header .logo{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.header .pic{
+	width: 110px;
+	height: 30px;
+	z-index: 2;
+	position: absolute;
+	top: 24px;
+	left: 10%;
+}
+.header .text{
+	position: absolute;
+	z-index: 3;
+	font-size: 30px;
+	line-height: 40px;
+	top: 20px;
+	left: 12%;
+	font-style: oblique;
+}
+.header .welcome{
+	position: absolute;
+	z-index: 4;
+	top: 25px;
+	line-height: 30px;
+	right: 13%;
+}

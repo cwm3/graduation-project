@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+	
+
+<struts>
+
+    <!-- 设置Web应用的默认编码集为gbk -->
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+	<!-- 设置Struts2应用的国际化资源文件，多个文件中间可用逗号分隔 -->
+	<constant name="struts.custom.i18n.resources" value="messageResource"/>
+	<constant name="struts.action.extension" value="action"></constant>
+	<constant name="struts.ui.theme" value="simple" />
+		
+<!-- 	<constant name="struts.devMode" value="true" />
+ -->    <constant name="struts.multipart.saveDir" value="/tmp"/>
+    <constant name="struts.multipart.maxSize" value="100000000"/> 
+
+
+
+	<package name="default1" namespace="/"   extends="struts-default">
+		<action name="upload" class="com.fileupload.action.FileUploadAction" method="execute"> 
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+	
+    <package name="struts2" namespace="/"   extends="struts-default">      
+       <action name="FileDownload" class="com.struts2.filedownload.FileDownload">
+           <result name="success" type="stream">
+               <param name="contentType">text/plain</param>
+               <param name="contentDisposition">attachment;fileName="${fileName}"</param>
+               <param name="inputName">downloadFile</param>
+               <param name="bufferSize">1024</param>
+           </result>
+       </action>
+   
+   </package>
+   
+   
+   <package name="default" namespace="/" extends="struts-default">
+  		
+  <action name="autoCompleterAction" class="com.productsystem.action.AutoCompleterAction"  method="display">
+	<result name="none">/autocompleter.jsp</result>
+  </action>
+		
+  <action name="resultAction"  class="com.productsystem.action.AutoCompleterAction" >
+	<result name="success">/result.jsp</result>
+  </action>
+</package>
+
+<package name="userjson" namespace="/"   extends="json-default">
+    
+     <action name="add_user" class="com.productsystem.action.UserAction"  method="addUser" >
+            <result name="ADD_SUCCESS" type="json"></result>  
+        </action>
+       
+	</package>
+
+	<package name="user" namespace="/"   extends="struts-default">
+
+		<action name="login" class="com.productsystem.action.UserAction"  method="login" >
+		       <result name="success" >/main.jsp</result>
+		       <result name="fail" >/userloginagain.jsp</result>
+		</action>
+			<action name="adduser" class="com.productsystem.action.UserAction"  method="addUser" >
+		       <result name="success" >/adduseragain.jsp</result>
+		       <result name="fail" >/adduserfail.jsp</result>
+		</action>
+		
+<!-- 		 <action name="add_user" class="com.productsystem.action.UserAction"  method="addUser" >
+            <result name="ADD_SUCCESS" type="json"></result>  
+        </action>  -->
+		
+		<action name="load" class="com.productsystem.action.UserAction"  method="loadUser" >
+			<result name="success">/update.jsp</result>
+		</action>
+		
+			
+		<action name="list" class="com.productsystem.action.UserAction"  method="list" >
+			<result name="success">/list.jsp</result>
+		</action>
+			
+			
+		<action name="listuserbypageaction" class="com.productsystem.action.UserAction"  method="browse" >
+			<result name="success">/listuser.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			
+		</action>
+		
+		<action name="deleteuser" class="com.productsystem.action.UserAction"  method="deleteUser" >
+		<result name="success" type="redirectAction" >
+		 			<param name="actionName">listuserbypageaction.action</param>
+ 			    </result>
+		</action>
+		
+		<action name="updateuser" class="com.productsystem.action.UserAction"  method="updateuser" >
+		<result name="success" type="redirectAction" >
+		 			<param name="actionName">listuserbypageaction.action</param>
+ 			    </result>
+		</action>
+		
+       	<action name="loaduser" class="com.productsystem.action.UserAction"  method="loadUser" >
+		<result name="success">/updateusernew.jsp</result>
+		</action>
+			
+		
+	</package>
+	
+	<package name="vendorjson" namespace="/"   extends="json-default">
+    
+		<action name="addvendor" class="com.productsystem.action.VendorAction"  method="addVendor" >
+            <result name="ADD_SUCCESS" type="json"></result>  
+        </action>
+       
+	</package>
+	
+		<package name="vendor" extends="struts-default" >
+	    
+	    <action name="vendorlogin" class="com.productsystem.action.VendorAction"  method="login" >
+		       <result name="success" >/vendormain.jsp</result>
+		       <result name="fail" >/vendorloginagain.html</result>
+		</action>
+		
+		
+		<action name="listvendorbypageaction" class="com.productsystem.action.VendorAction"  method="browse" >
+			<result name="success">/listvendor.jsp</result>
+		</action>
+		
+<!-- 	   <action name="addvendor" class="com.productsystem.action.VendorAction"  method="addVendor" >
+			<result name="success" >/vendor.html</result>
+		</action>  -->
+		
+		<action name="selectvendorbytiaojian" class="com.productsystem.action.VendorAction"  method="selectVendor">
+			<result name="success" >/listvendorbytiaojian.jsp</result>
+		</action>
+		
+	    <action name="selectvendorcapacity" class="com.productsystem.action.VendorAction"  method="selectVendorCapacity">
+			<result name="success" >/listschedulebytiaojian.jsp</result>
+	
+		</action>
+		
+		  <action name="selectvendor" class="com.productsystem.action.VendorAction"  method="selectVendoroprtion">
+			<result name="success" >/listvendor.jsp</result>
+	
+		</action>
+		
+		
+		<action name="selectvendorschedule" class="com.productsystem.action.VendorAction"  method="selectVendorSchedule">
+			<result name="success" >/vendorschedulelist.jsp</result>
+	
+		</action>
+		
+		<action name="vendorschedule" class="com.productsystem.action.VendorAction"  method="listVendorSchedule">
+			<result name="success" >/listvendorschedule.jsp</result>
+	
+		</action>
+			
+		<action name="deletevendor" class="com.productsystem.action.VendorAction"  method="deleteVendor" >
+									<result name="success">/listvendor.jsp</result>
+		</action>
+		
+		<action name="loadvendor" class="com.productsystem.action.VendorAction"  method="loadVendor" >
+			<result name="success">/updatevendor.jsp</result>
+		</action>
+		
+		
+		<action name="exportvendor" class="com.productsystem.action.VendorAction"  method="exportVendor" >
+			<result name="success">/updatevendor.jsp</result>
+		</action>
+		
+		
+		<action name="updatevendor" class="com.productsystem.action.VendorAction"  method="updateVendor" >
+						<result name="success">/listvendor.jsp</result>
+
+		</action>
+		
+	    <action name="selectvendorbyname" class="com.productsystem.action.VendorAction"  method="selectVendorByName" >
+			<result name="success"  >
+		 			showvendor.jsp
+ 			    </result>
+		</action>
+		
+		
+	</package>
+	
+		<package name="capacityjson" namespace="/"   extends="json-default">
+    
+		<action name="updatecapacity" class="com.productsystem.action.ScheduleAction"  method="updateschedule" >
+            <result name="update_success" type="json"></result>  
+        </action>
+       
+	</package>
+	
+		<package name="schedule" extends="struts-default" >
+		 
+		 <action name="addschedule" class="com.productsystem.action.ScheduleAction"  method="addSchedule" >
+			<result name="success" type="redirectAction" >
+		 			<param name="actionName">listschedulebypageaction.action</param>
+ 			    </result>
+		</action>
+		
+	   <action name="deleteschedule" class="com.productsystem.action.ScheduleAction"  method="deleteSchedule" >
+			<result name="success" type="redirectAction" >
+		 			<param name="actionName">listschedulebypageaction.action</param>
+ 			    </result>
+		</action>
+		
+		<action name="listschedulebypageaction" class="com.productsystem.action.ScheduleAction"  method="browse" >
+			<result name="success">/listschedule.jsp</result>
+		</action>
+		
+		<action name="listlastmonthschedulebypageaction" class="com.productsystem.action.ScheduleAction"  method="browseLastMonthSchedule" >
+			<result name="success">/listlastmonthschedule.jsp</result>
+		</action>
+		
+		
+	    <action name="listschedulebytiaojian" class="com.productsystem.action.ScheduleAction"  method="browseScheduleByTiaoJian" >
+			<result name="success">/listschedulebytiaojian.jsp</result>
+		</action>
+		
+		
+		<action name="updateschedule" class="com.productsystem.action.ScheduleAction"  method="updateschedule" >
+			<result name="success" type="redirectAction" >
+		 	      <param name="actionName">listschedulebypageaction.action</param>
+ 		   </result>
+       </action>
+       
+       
+       
+       
+       	<action name="loadschedule" class="com.productsystem.action.ScheduleAction"  method="loadSchedule" >
+			<result name="success">/updateschedule.jsp</result>
+		</action>
+		
+ </package>
+	    
+	<package name="forselect" extends="struts-default" >
+		 
+		 <action name="forselectvendor" class="com.productsystem.action.VendorAction"  method="forSelectVendor" >
+			<result name="success" type="redirectAction" >
+		 			<param name="actionName">listschedulebypageaction.action</param>
+ 			    </result>
+		</action>
+		
+		<action name="listschedulebypageaction" class="com.productsystem.action.ScheduleAction"  method="browse" >
+			<result name="success">/listschedule.jsp</result>
+		</action>
+		
+
+		
+		<action name="forselectvendor" class="com.productsystem.action.ScheduleAction"  method="loadvendorscheduleByVendorId" >
+			<result name="success">/listschedule.jsp</result>
+		</action>
+	    </package>
+	    
+	    
+	 <package name="projectjson" namespace="/"   extends="json-default">
+		   <action name="updateproject" class="com.productsystem.action.ProjectAction"  method="updateProject" >
+		   <result name="update_success" type="json"></result>  
+		</action>
+	</package>
+	
+
+	    <package name="project" extends="struts-default" >
+		 
+			<action name="addproject" class="com.productsystem.action.ProjectAction"  method="addProject" >
+			<result name="success">/addprojectagain.jsp</result>
+		</action>
+		
+		<action name="listprojectbypageaction" class="com.productsystem.action.ProjectAction"  method="browse" >
+		   <result name="success">/listproject.jsp</result>
+		</action>
+		
+		<action name="initmanagerproject" class="com.productsystem.action.ProjectAction"  method="list" >
+		   <result name="success">/managerproject.jsp</result>
+		</action>
+
+	
+		<action name="loadproject" class="com.productsystem.action.ProjectAction"  method="loadProject" >
+			<result name="success">/updateproject.jsp</result>
+		</action>
+		
+ 		<action name="selectprojectbytiaojian" class="com.productsystem.action.ProjectAction"  method="loadProjecBySystemCode" >
+			<result name="success">/listprojectbytiaojian.jsp</result>
+		</action>
+		
+		
+		<action name="deleteproject" class="com.productsystem.action.ProjectAction"  method="deleteProject" >
+			 <result name="success">/listproject.jsp</result>
+		</action>
+		
+	    </package>
+	    
+	    
+	        <package name="translatorname" extends="struts-default" >
+		 
+        <action name="addtranslatorname" class="com.productsystem.action.TranslatorName"  method="addTranslatorName" >
+				 <result name="success">/addcostcodeagain.jsp</result>
+		</action>			
+		
+	    </package>
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+    
+	     <package name="costcodejson" namespace="/"   extends="json-default">
+		   <action name="updatecostcode" class="com.productsystem.action.CostCodeAction"  method="updateCostCode" >
+		   <result name="update_success" type="json"></result>  
+		</action>
+	</package>
+	
+
+	    <package name="costcode" extends="struts-default" >
+		 
+        <action name="addcostcode" class="com.productsystem.action.CostCodeAction"  method="addCostCode" >
+				 <result name="success">/addcostcodeagain.jsp</result>
+		</action>		
+		<action name="listcostcodebypageaction" class="com.productsystem.action.CostCodeAction"  method="browse" >
+		   <result name="success">/listcostcode.jsp</result>		   
+		</action>
+		
+	    <action name="deletecostcode" class="com.productsystem.action.CostCodeAction"  method="deleteCostCode" >
+			 		   <result name="success">/listcostcode.jsp</result>		   
+			 
+		</action>
+		
+	
+		<action name="loadcostcode" class="com.productsystem.action.CostCodeAction"  method="loadCostCode" >
+			<result name="success">/updatecostcode.jsp</result>
+		</action>
+	
+		
+	    </package>
+	    
+
+	    	    	    
+	 <package name="distributionjson" namespace="/"   extends="json-default">
+		       <action name="updatedistribution" class="com.productsystem.action.DistributionAction"  method="updateDistribution">
+				   <result name="update_success" type="json"></result>  
+ 		     </action>
+ 		     
+ 		 <action name="deletedistribution" class="com.productsystem.action.DistributionAction"  method="deleteDistribution" >
+            <result name="DELETE_SUCCESS" type="json"></result>  
+        </action> 
+ 		      		          
+	</package>
+	
+	    <package name="distribution" extends="struts-default" >
+		 
+			<action name="adddistribution" class="com.productsystem.action.DistributionAction"  method="addDistribution">
+		         <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		
+		    <action name="addOneExternalDistribution" class="com.productsystem.action.DistributionAction"  method="addOneExternalDistribution">
+		         <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		   
+		   
+		    <action name="addOneInternalDistribution" class="com.productsystem.action.DistributionAction"  method="addOneInternalDistribution">
+		         <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		    
+		    		   
+		    <action name="addMuchInternalDistribution" class="com.productsystem.action.DistributionAction"  method="addMuchInternalDistribution">
+		         <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		    
+		   <action name="addMuchExternalDistribution" class="com.productsystem.action.DistributionAction"  method="addMuchExternalDistribution">
+		         <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		    
+		    
+
+	       <action name="listdistributionbypageaction" class="com.productsystem.action.DistributionAction"  method="browse">
+		   <result name="success">/listdistributionresult.jsp</result>
+		   </action>
+		
+		
+		<action name="selectdistribution" class="com.productsystem.action.DistributionAction"  method="selectDistribution" >
+			 <result name="success">/listdistribution.jsp</result>
+		</action>
+	    
+
+	    <action name="selectdistributionbyproject" class="com.productsystem.action.DistributionAction"  method="selectDistributionByProject" >
+			 <result name="success">/listdistributionresult.jsp</result>
+		</action>
+		
+		<action name="selectdistributionbysystemcode" class="com.productsystem.action.DistributionAction"  method="selectDistributionBySystemcode" >
+			 <result name="success">/listdistributionbysystemcode.jsp</result>
+		</action>
+<!-- 		
+		<action name="deletedistribution" class="com.productsystem.action.DistributionAction"  method="deleteDistribution" >
+		     <result name="success">/listdistributionbysystemcode.jsp</result>
+		     <result name="fail" >/fail.jsp</result>
+		     
+		</action> -->
+		
+		    <action name="loaddistribution" class="com.productsystem.action.DistributionAction"  method="loadDistribution">
+		        <result name="success">/updatedistribution.jsp</result>
+		    </action>
+		
+	    <action name="listdistribution" class="com.productsystem.action.DistributionAction"  method="selectDistributionByProject">
+		        <result name="success">/listdistributionresult.jsp</result>
+		    </action>
+		    	    
+	    </package>
+	    
+	    
+	    
+	    	    
+	 <package name="qajson" namespace="/"   extends="json-default">
+		
+			<action name="updateqa" class="com.productsystem.action.QaAction"  method="updateQq" >
+				   <result name="update_success" type="json"></result>  
+ 		     </action>
+ 		    	<action name="addqaqa" class="com.productsystem.action.QaAction"  method="addOnlyQa">
+		             <result name="update_success" type="json"></result>  
+		    </action>
+		      
+	</package>
+	    
+
+	    <package name="qa" extends="struts-default" >
+		 
+			<action name="addqa" class="com.productsystem.action.QaAction"  method="addQa">
+		            <result name="success">/addqanew.jsp</result>
+		    </action>
+		
+		
+	   <action name="listqabypageaction" class="com.productsystem.action.QaAction"  method="browse">
+		   <result name="success">/listqa.jsp</result>
+		</action>
+		
+		<action name="listqabytiaojianaction" class="com.productsystem.action.QaAction"  method="browse">
+		   <result name="success">/listqa.jsp</result>
+		</action>
+		
+	    <action name="deleteqa" class="com.productsystem.action.QaAction"  method="deleteQa" >
+	              <result name="success">/listqa.jsp</result>
+		</action>
+		
+        
+        <action name="loadqa" class="com.productsystem.action.QaAction"  method="loadQa" >
+			<result name="success">/updateqa.jsp</result>
+		</action>
+		
+		<action name="initqa" class="com.productsystem.action.QaAction"  method="initQa" >
+			<result name="success">/addqa.jsp</result>
+		</action>
+		
+	   <action name="loadqaByTiaojian" class="com.productsystem.action.QaAction"  method="loadQaByTiaojian" >
+			  <result name="success">/listqabytiaojian.jsp</result>
+       </action>
+       
+ 		   
+ 		<action name="fileUpload" class="com.productsystem.action.QaAction"  method="fileUp">
+		           <result name="success">/addqaagain.jsp</result>
+		    </action>
+
+	    </package> 
+	    
+	    <package name="/" extends="struts-default" >
+		 
+		    
+		    <action name="selectbookedcapacitybyvendordate" class="com.productsystem.action.FileUploadAction"  method="execute">
+		            <result name="success">/addqa.jsp</result>
+		    </action> 
+		    
+
+	    </package> 
+	    
+	    
+	    
+	    
+     <!-- 配置translator -->	       
+     <package name="translatorjson" namespace="/"   extends="json-default">
+		   <action name="updatetranslator" class="com.productsystem.action.TranslatorAction"  method="updateTranslator" >
+		   <result name="update_success" type="json"></result>  
+		</action>
+	</package>
+	
+	<package name="translator" extends="struts-default" >
+		 
+        <action name="addtranslator" class="com.productsystem.action.TranslatorAction"  method="addTranslator" >
+				 <result name="success">/addtranslatoragain.jsp</result>
+				 
+		</action>		
+		<action name="listtranslatorbypageaction" class="com.productsystem.action.TranslatorAction"  method="browse" >
+		   <result name="success">/listtranslator.jsp</result>
+		   <result name="fail" >/fail.jsp</result>
+		   	   
+		</action>
+		
+	    <action name="deletetranslator" class="com.productsystem.action.TranslatorAction"  method="deleteTranslator" >
+			 		   <result name="success">/listtranslator.jsp</result>		   
+			 
+		</action>
+		
+	
+		<action name="loadtranslator" class="com.productsystem.action.TranslatorAction"  method="loadTranslator" >
+			<result name="success">/updatetranslator.jsp</result>
+		</action>
+		
+	    </package>
+	    
+	    
+	    
+	    	    
+</struts>
+  	

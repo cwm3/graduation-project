@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="VendorManagerSystem014"
+  id="myeclipse.1508491431931"
+  context-root="/VendorManagerSystem014"
+  j2ee-spec="5.0"
+  archive="VendorManagerSystem014.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

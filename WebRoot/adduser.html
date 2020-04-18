@@ -1,0 +1,219 @@
+<head>
+
+ <script  type="text/javascript">
+
+
+function checkpost() { 
+   if(myform.username.value=="" || myform.username.value== null )
+       {
+    	     alert("please input User Name"); 
+    	     myform.username.focus(); 
+    	     return false; 
+        } 
+
+ 
+if(myform.password.value=="" || myform.password.value== null )
+   {
+	    alert("please input User Password"); 
+	     myform.password.focus(); 
+	     return false; 
+    } 
+   
+   if(myform.password2.value=="" || myform.password2.value== null )
+   {
+	    alert("please input Confirm Password"); 
+	     myform.password2.focus(); 
+	     return false; 
+    } 
+   
+   if(myform.userposition.value=="" || myform.userposition.value== null )
+   {
+	    alert("please input User Position"); 
+	     myform.userposition.focus(); 
+	     return false; 
+    } 
+
+   
+   if(myform.yd_mc_id.value=="" || myform.yd_mc_id.value== null )
+   {
+	    alert("please input Permissions Module"); 
+	     myform.yd_mc_id.focus(); 
+	     return false; 
+    }
+   
+     
+}
+
+
+function checkPassword() {
+   var password=document.getElementById("password").value;
+   var password2=document.getElementById("password2").value;
+   if(password!=password2) {
+       alert("User Password and Confirm Password are not consistent"); 
+       document.getElementById("password2").value= "";
+   }
+
+ }
+
+/* function checkVendor() {
+     var vendor1 = document.getElementsByName("vendor1");
+     var vendor2 = document.getElementsByName("vendor2");
+     var vendor3 = document.getElementsByName("vendor3");
+     var vendor4 = document.getElementsByName("vendor4");
+     var vendor5 = document.getElementsByName("vendor5");
+     
+     if (vendor1[0].checked==true) {
+         vendor2[0].disabled=true;
+         vendor3[0].disabled=true;
+         vendor4[0].disabled=true;
+         vendor5[0].disabled=true;
+     }
+     
+     if (vendor1[0].checked==true) {
+         vendor2[0].disabled=true;
+         vendor3[0].disabled=true;
+         vendor4[0].disabled=true;
+         vendor5[0].disabled=true;
+         
+     }
+     
+ } */
+
+</script>
+
+
+<style type="text/css">
+body{
+ font-size: 12px;
+ 
+}
+
+.redtext{
+   color:red;
+}
+.bottom {
+   margin-top:20px;
+   margin-left:45%;
+   font-size: 12px;
+
+}
+.allpage{
+   margin-top:5px;
+   margin-left: 20px;
+   font-size: 12px;
+}
+fieldset
+{
+  border: 1px solid #61B5CF;
+  margin-top: 10px;
+  padding: 8px;
+  width:99%;
+  height:330px;
+}
+legend1
+{
+    font-family : Arial,Tahoma,Verdana;
+    font-size: 10px;  
+}
+.title{
+ 	font-family : Arial,Tahoma,Verdana;
+    font-size: 12px;  
+}
+.tijiao{
+      margin-top:15px;
+}
+</style>
+
+</head>
+<body>  
+     </br>
+     <div align="center" ><h4><font color="black">Add User</center></font></h4></div>
+    <div class="allpage">   
+    <form method="post" action="adduser.action" id="myform"  name="myform" onsubmit="return checkpost();" >
+    <fieldset style="height:380px;font-size: 12px;">
+    <legend class="legend">User Infomation</legend>
+      <div class="tijiao">
+       <table width="100%"  border="1" cellspacing="0" cellpadding="0" bordercolor=#000000 style="border-collapse:collapse" >
+       <tr>
+       <td align="right" width="40%" height="30px"><span class='title'>User Name:&nbsp;</span></td>	
+       <td>&nbsp;<input type="text" id="username"  name="username" style="width:180px;"></span><span class='redtext'>*</span></td>	
+     </tr>
+     <tr>
+        <td align="right" width="40%" height="30px"><span class='title'>User Password:&nbsp;</td>	
+		<td>&nbsp;<input type="password" id="password"  name="password" style="width:180px;"></span><span class='redtext'>*</span>
+	  </td>	
+     </tr>  
+     <tr>
+         <td align="right" width="40%" height="30px" ><span class='title'>Confirm Password:&nbsp;</td>	
+		 <td>&nbsp;<input type="password" id="password2"  name="password2" onBlur="checkPassword();" style="width:180px;" ></span><span class='redtext'>*</span>
+	  </td>	
+     </tr>  
+         <tr>
+            <td align="right" width="40%" height="30px"><span class='title'>User Position:&nbsp;</td>	
+		    <td >&nbsp;<select id ="userposition" name="userposition" style="width:180px;font-size: 12px;">
+						<option value="lead" style="font-size: 10px;">Lead</option>
+						<option value="vendorcoordinator">Vendor Coordinator</option>
+						<option value="departmentmanager">Department Manager</option>
+					    <option value="linemanager">Line Manager</option>
+						</select></span><span class='redtext'>*</span></td>	
+     </tr>  
+         <tr>
+         <td align="right" width="40%" height="30px" ><span class='title'>LmorGl:&nbsp;</td>
+         <td>&nbsp;<input type="text" id="lmorgl"  name="lmorgl" style="width:180px;"></td>
+        </tr>  
+        <tr>
+            <td align="right" width="40%" height="250px" ><span class='title'>Permissions Module:&nbsp;</span></td>	
+            <td>&nbsp;<fieldset style="height:60px;">
+              <legend ><span class='title'>Vendor Management</span></legend>
+                      <input type="radio" id="vendor1"  name="vendor1" value="vendor_all"  onclick="checkVendor();"/><span class='title'>All</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="vendor2"  name="vendor2" value="Add New Vendor" /><span class='title'>Add New Vendor</span> &nbsp; &nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="vendor3"  name="vendor3" value="Vendor Detail List" /><span class='title'>Vendor Detail List</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="vendor4"  name="vendor4" value="Vendor Detail Selection" /><span class='title'>Vendor Detail Selection</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="vendor5"  name="vendor5" value="Vendor Capactity Search" /><span class='title'>Vendor Capactity Search</span>
+               </fieldset>
+               
+               &nbsp;<fieldset style="height:60px;">
+              <legend><span class='title'>Project Management</span></legend>
+                      <input type="radio" id="project1" name="project1" value="Project_All" /><span class='title'>All</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="project2" name="project2" value="Add New Project" /><span class='title'>Add New Project</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="project3" name="project3" value="Project Detail Section" /><span class='title'>Project Detail Section</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="project4" name="project4" value="OutSource Management" /><span class='title'>OutSource Management</span>&nbsp;&nbsp;
+               </fieldset>
+               
+                           
+               &nbsp;<fieldset style="height:60px;">
+              <legend><span class='title'>QA Management</span></legend>
+                      <input type="radio" id="qa1"  name="qa1" value="QA_All" /><span class='title'>All</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="qa2" name="qa12" value="Add New Qa" /><span class='title'>Add New Qa</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="qa3" name="qa3" value="Qa Detail Section" /><span class='title'>Qa Detail Section</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="qa4" name="qa4" value="Monthly Qa" /><span class='title'>Monthly Qa</span>&nbsp;&nbsp;
+               </fieldset>
+               
+               &nbsp;<fieldset style="height:60px;">
+              <legend ><span class='title'>User Management</span></legend>
+                      <input type="radio" id="user1"  name="user1" value="User_all" /><span class='title'>All</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="user2" name="user2" value="Add New User" /><span class='title'>Add New User</span>&nbsp;&nbsp; &nbsp;&nbsp;  
+                      <input type="radio" id="user3" name="user3" value="User Detail List" /><span class='title'>User Detail List</span>&nbsp;&nbsp;
+               </fieldset>
+               
+               
+            </td>
+      
+
+       </tr> 
+       </table>
+         </div>  
+         <div class="bottom"><input type="submit" value="Add" style="width:70px;height:25px;" />
+         <input type="reset" value="Reset" style="width:70px;height:25px;" /></div> 
+</fieldset>
+    </form>
+    </div>
+
+ 
+  
+</div>
+
+
+	
+
+</body>

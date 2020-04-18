@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Vendor Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content=" " />
+        <meta name="keywords" content=" "/>
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+	    <script type="text/javascript" src="vendormanger/vendor.js"></script>
+	    <script type="text/javascript">
+		 function open_win() {
+		   	  window.showModalDialog("updatevendorpassword.jsp","","dialogWidth:740px;dialogHeight:300px;center:1;status:0");
+		 }
+		
+      </script>
+    </head>
+    
+    <body>
+    
+      <div class="top">
+       <p style="text-align:center;color:#123456;font-size:45px;width="900px"  height="80px";">Translation Project Management System</p>
+      </div>
+  
+  
+	  <div class="wrapper">
+		<div class="content">
+				<div id="form_wrapper" class="form_wrapper" >
+					<form class="active" id="active" action="vendorlogin.action" method="post" onsubmit="return checkpost();" >
+						<h3>Login</h3>
+						<div>
+							<label>Vendor Id:</label>
+							<input type="text" id="vendorid" name="vendorid" />
+							<span class="error">This is an error</span>
+						</div>
+						<div>
+							<label>Password: </label>
+							<input type="password" id="vendorpassword" name="vendorpassword"/>
+							<span class="error">This is an error</span>
+						</div>
+						<div class="bottom">
+							<input type="submit" value="Login"></input>
+							<div class="clear"><a href="javascript:void(0);" onclick="return open_win();">Reset Password</a></div>
+							</div>
+					</form>
+				</div>
+				
+		  </div>
+		</div>
+		<p style="text-align:center;color:#123456;font-size:25px;">This is a Translation Project Management System</p> 
+    
+       	
+		
+	
+    </body>
+</html>

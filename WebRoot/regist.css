@@ -1,0 +1,17 @@
+.Big_regist{position: absolute;left:255px;top:170px;background-color:white; border: 1px solid;width:850px;height:500px;}
+.head1{position: absolute;left:260px;top:4px;}
+.head2{position:absolute;left:465px;top:25px;}
+.head3{position: absolute;left:695px;top:110px}
+.right_er{position: absolute;left:610px;top:20px}
+.saomiao{position: absolute;left:610px;top:158px}
+.line{position: absolute;left:500px;top:20px}
+.form_po{position: absolute;left:30px;top:50px}
+.form_pobt{position: absolute;left:130px;top:45px;}
+.get_code{position: absolute;left:240px;top:283px}
+.bottom_re{position: absolute;left:330px;top:750px}
+.longin_it{position: absolute;left:536px;top:388px}
+.submit_reg{position:absolute;left:100px;top:290px}
+/*È¥ÐéÏß¿ò*/
+a:focus, input[type=button] ,input[type=submit] {
+    outline:none;
+}

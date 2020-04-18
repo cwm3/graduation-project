@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import "comm.css";
+.select{ border:1px solid #e4e4e4; height:33px; padding:0 5px; font-size: 12px; border-radius:3px; -webkit-border-radius:3px; color:#666;}
+.box{ padding:12px; overflow:hidden; }
+.painer { overflow:hidden; border:1px solid #E4E4E4; -webkit-border-top-left-radius:4px; border-top-right-radius:4px; -webkit-border-top-right-radius:4px;}
+.painer .ht{ padding:12px; background:#e5e5e5; overflow:hidden; border:1px solid #E4E4E4; border-top-left-radius:4px;}
+.painer .ht .fl a{ float:left; margin-right:12px;}
+.painer .ht .fr .select{ float:left;}
+.painer .ht .fr .search{ float:left; height:32px; background:#fff; width:220px; margin-left:12px; position:relative;border-radius:3px; -webkit-border-radius:3px; overflow:hidden;}
+.painer .ht .fr .search .intext{ padding:4px 10px; border:0px; margin-top:2px; font-size:12px;}
+.painer .ht .fr .search .sbtn{ position:absolute; cursor:pointer; height:33px; right:0px; top:0px; background:#068962; color:#fff; width:60px; border:0px; }
+
+.table{ width:100%;}
+.table th{ height:45px; border-bottom:2px solid #e4e4e4;}
+.table td{ height:38px; text-align:center; border-bottom:1px solid #e4e4e4;}
+.table td a{color:#068962;}

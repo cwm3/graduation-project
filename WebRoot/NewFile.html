@@ -1,0 +1,35 @@
+<html> 
+<head> 
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script language="javascript"> 
+$(document).ready(function(){ 
+var options = { 
+1: "第一个选择项", 
+2: "第二个选择项", 
+3: "第三个选择项", 
+4: "第四个选择项", 
+5: "第五个选择项", 
+6: "第六个选择项" 
+}; 
+$("#test_div").checks_select(options); 
+}); 
+</script> 
+<style> 
+.checks_div_select { 
+width: 150px; 
+background-color: #e9fbfb; 
+border: 1px solid #18cbcd; 
+font-family: 'Verdana', '宋体'; 
+font-size: 12px; 
+position:absolute; 
+left:2px; 
+top:25px; 
+} 
+</style> 
+</head> 
+<body> 
+<div style="position:relative;"> 
+<input type="text" id="test_div"/> 
+</div> 
+</body> 
+</html> 

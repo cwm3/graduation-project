@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>index</title>
+		<meta name="description" content="">
+		<meta name="author" content="Cayenne">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<!-- css文件 -->
+		<link rel="stylesheet" type="text/css" href="css/vendortest.css">
+	<script language="JavaScript">
+	function tick() {
+	var hours, minutes, seconds;
+	var intHours, intMinutes, intSeconds;
+	var today;
+	today = new Date();
+	intYear = today.getFullYear();
+	intMonth = today.getMonth() + 1;
+	intDay = today.getDate();
+	intHours = today.getHours();
+	intMinutes = today.getMinutes();
+	intSeconds = today.getSeconds();
+	
+	if (intHours == 0) {
+	hours = "00:";
+	} else if (intHours < 10) { 
+	hours = "0" + intHours+":";
+	} else {
+	hours = intHours + ":";
+	}
+	
+	if (intMinutes < 10) {
+	minutes = "0"+intMinutes+":";
+	} else {
+	minutes = intMinutes+":";
+	}
+	if (intSeconds < 10) {
+	seconds = "0"+intSeconds+" ";
+	} else {
+	seconds = intSeconds+" ";
+	} 
+	timeString = intYear + "-" + intMonth + "-" + intDay+ " " + hours+minutes+seconds;
+	Clock.innerHTML = timeString;
+	window.setTimeout("tick();", 1000);
+	}
+	
+	window.onload = tick;
+	//-->
+	
+	</script>
+
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo"><img src="images/image.jpg" width="100%;"></div>
+			<div  class="pic">
+				<img  src="images/shouye/u19.png">
+			</div>
+		
+			<div class="welcome">
+				<p>■ Welcome:<%=session.getAttribute("vendorid") %>&nbsp;|&nbsp;<a href='listschedulebypageaction.action?page=1&Schedule.vendorid=<%=session.getAttribute("vendorid") %>'  target="_blank">List Schedule</a>|&nbsp;<a href="vendorlogout.jsp" >Log out</a>
+			</div>
+		</div>
+		<!--end header-->
+	</body>
+</html>
